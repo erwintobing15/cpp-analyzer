@@ -1,7 +1,18 @@
 <?php 
     if (isset($_POST['submit'])) {
-        $inputCodeRaw = isset($_POST['inputCode']) ? $_POST['inputCode'] : "";
-        $inputCode = trim($inputCodeRaw);
+        $inputCode = isset($_POST['inputCode']) ? $_POST['inputCode'] : "";
+
+        $text_input = explode("\n", $inputCode);
+
+        $token_output = [];
+        foreach ($text_input as $key_row => $string_row) {
+            $string_splitted = explode(" ", $string_row);
+            $temp_arr = [];
+            foreach ($string_splitted as $key_string => $string) {
+            array_push($temp_arr, $string);
+            }
+            array_push($token_output, $temp_arr);
+        }
     } else {
         $inputCode = "";
     };
@@ -25,8 +36,25 @@
         <div class="col-xs-12 col-md-4">
             <div class="form-group">
                 <label for="outputToken">Token List</label>
-                <textarea class="form-control" id="outputToken" rows="25"><?php echo $inputCode; ?></textarea>
+                <!-- <textarea class="form-control" id="outputToken" rows="25">
+                    
+                </textarea> -->
             </div>
+
+            <?php
+                if ($inputCode != "") {
+                    $counter = 1;
+                    foreach ($token_output as $key => $string_splitted) {
+                        foreach ($string_splitted as &$string) {
+                            if (strlen($string) > 1) {
+                            echo "Token " . $counter . " - Line " . $key+1 . " --> " . $string . "<br>";
+                            $counter += 1;
+                            }
+                        }
+                    }
+                }
+            ?>
+
         </div>
     </div> 
 </div>
