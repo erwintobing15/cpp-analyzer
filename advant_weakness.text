@@ -1,0 +1,10 @@
+Yang dapat dilakukan :
+1. Mendeteksi kata yang terdiri dari simbol dan identifier atau konstanta yang menyatu,
+   dan memisahkannya menjadi elemen-elemen terkecil yang mungkin.
+2. Mendeteksi semua assignment operator pada c++ yaitu =, +=, -=, *=, /=, %= 
+3. Bisa mengabaikan whitespace "#include < iostream        >";
+4. Membaca 3dafgf2342sd sebagai identifier yang nantinya akan menghasilkan error ketika dicompile
+5. Mendeteksi konstanta angka bernilai desimal tanpa dipisah berdasarkan titik, misal : 2.57
+
+Yang tidak dapat dilakukan :
+1. special simbol untuk pointer *
