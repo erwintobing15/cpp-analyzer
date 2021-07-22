@@ -20,7 +20,7 @@
 
 <div id="scanner-page">
     <div class="row">
-        <div class="col-xs-12 col-md-8">
+        <div class="col-xs-12 col-md-6">
             <form method="post">
                 <div class="form-group">
                     <label for="inputCode">Type code here!</label>
@@ -33,12 +33,143 @@
             </form>
         </div>
 
-        <div class="col-xs-12 col-md-4">
+        <div class="col-xs-12 col-md-6">
             <div class="form-group">
-                <label for="outputToken">Token List</label>
-                <!-- <textarea class="form-control" id="outputToken" rows="25">
-                    
+                <!-- <label for="outputToken">Token List</label>
+                <textarea class="form-control" id="outputToken" rows="25">
+
                 </textarea> -->
+
+                <label for="outputToken">Token List</label>
+                <table class="scrolldown" id="outputToken">
+                    <!-- Table head content -->
+                    <thead>
+                        <tr>
+                            <th>Token</th>
+                            <th>Line</th>
+                            <th>Token</th>
+                            <th>Kategori</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Table body content -->
+                    <tbody>
+                        <tr>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                        </tr>
+                        <tr>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                        </tr>
+                        <tr>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                        </tr>
+                        <tr>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                        </tr>
+                        <tr>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                        </tr>
+                        <tr>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                        </tr>
+                        <tr>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                        </tr>
+                        <tr>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                        </tr>
+                        <tr>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                        </tr>
+                        <tr>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                        </tr>
+                        <tr>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                        </tr>
+                        <tr>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                        </tr>
+                        <tr>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                        </tr>
+                        <tr>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                        </tr>
+                        <tr>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                        </tr>
+                        <tr>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                        </tr>
+                        <tr>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                        </tr>
+                        <tr>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                        </tr>
+                        <tr>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                            <td>Content</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
             <?php
