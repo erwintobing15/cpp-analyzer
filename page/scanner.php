@@ -35,17 +35,13 @@
 
         <div class="col-xs-12 col-md-6">
             <div class="form-group">
-                <!-- <label for="outputToken">Token List</label>
-                <textarea class="form-control" id="outputToken" rows="25">
-
-                </textarea> -->
 
                 <label for="outputToken">Token List</label>
                 <table class="scrolldown" id="outputToken">
                     <!-- Table head content -->
                     <thead>
                         <tr>
-                            <th>Token</th>
+                            <th>#</th>
                             <th>Line</th>
                             <th>Token</th>
                             <th>Kategori</th>
@@ -54,138 +50,26 @@
 
                     <!-- Table body content -->
                     <tbody>
-                        <tr>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                        </tr>
-                        <tr>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                        </tr>
-                        <tr>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                        </tr>
-                        <tr>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                        </tr>
-                        <tr>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                        </tr>
-                        <tr>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                        </tr>
-                        <tr>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                        </tr>
-                        <tr>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                        </tr>
-                        <tr>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                        </tr>
-                        <tr>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                        </tr>
-                        <tr>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                        </tr>
-                        <tr>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                        </tr>
-                        <tr>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                        </tr>
-                        <tr>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                        </tr>
-                        <tr>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                        </tr>
-                        <tr>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                        </tr>
-                        <tr>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                        </tr>
-                        <tr>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                        </tr>
-                        <tr>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                            <td>Content</td>
-                        </tr>
+                    <?php if ($inputCode != "") { ?>
+                    <?php $counter = 1;?>
+                    <?php foreach ($token_output as $key => $string_splitted) { ?>
+                    <?php foreach ($string_splitted as &$string) { ?>
+                    <?php echo "<tr>"; ?>
+                        <?php if (strlen($string) > 1) { ?>
+                        <?php echo "<td>" . $counter . "</td>"; ?>
+                        <?php echo "<td>" . ($key+1) . "</td>"; ?>
+                        <?php echo "<td>" . $string . "</td>"; ?>
+                        <?php echo "<td>" . $string . "</td>"; ?>
+                        <?php $counter += 1; ?>
+                        <?php } ?>
+                    <?php echo "</tr>"; ?>
+                    <?php } ?>
+                    <?php } ?>
+                    <?php } ?>
                     </tbody>
                 </table>
+
             </div>
-
-            <?php
-                if ($inputCode != "") {
-                    $counter = 1;
-                    foreach ($token_output as $key => $string_splitted) {
-                        foreach ($string_splitted as &$string) {
-                            if (strlen($string) > 1) {
-                            echo "Token " . $counter . " - Line " . $key+1 . " --> " . $string . "<br>";
-                            $counter += 1;
-                            }
-                        }
-                    }
-                }
-            ?>
-
         </div>
     </div> 
 </div>
