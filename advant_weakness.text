@@ -8,3 +8,5 @@ Yang dapat dilakukan :
 
 Yang tidak dapat dilakukan :
 1. special simbol untuk pointer *
+2. belum bisa membaca operator lebih dua simbol yang digabung dengan simbol lain contoh : <<" dibaca tetap <<" seharusnya << dan "
+3. tidak bisa membaca import library dengan akhiran .h contoh: stdio.h dibaca stdio .h

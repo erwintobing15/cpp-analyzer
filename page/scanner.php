@@ -1,18 +1,15 @@
 <?php 
+
+    require './compiler/scanner/analyzer.php';
+    require './compiler/scanner/tokens.php';
+    
+    $scanner = new Analyzer($identifiers,$constants,$keywords,$operators,$special_symbols);
+
     if (isset($_POST['submit'])) {
         $inputCode = isset($_POST['inputCode']) ? $_POST['inputCode'] : "";
 
-        $text_input = explode("\n", $inputCode);
+        $token_output = $scanner->generate_tokens($inputCode);
 
-        $token_output = [];
-        foreach ($text_input as $key_row => $string_row) {
-            $string_splitted = explode(" ", $string_row);
-            $temp_arr = [];
-            foreach ($string_splitted as $key_string => $string) {
-            array_push($temp_arr, $string);
-            }
-            array_push($token_output, $temp_arr);
-        }
     } else {
         $inputCode = "";
     };
@@ -53,17 +50,17 @@
                     <?php if ($inputCode != "") { ?>
                     <?php $counter = 1;?>
                     <?php foreach ($token_output as $key => $string_splitted) { ?>
-                    <?php foreach ($string_splitted as &$string) { ?>
-                    <?php echo "<tr>"; ?>
-                        <?php if (strlen($string) > 1) { ?>
-                        <?php echo "<td>" . $counter . "</td>"; ?>
-                        <?php echo "<td>" . ($key+1) . "</td>"; ?>
-                        <?php echo "<td>" . $string . "</td>"; ?>
-                        <?php echo "<td>" . $string . "</td>"; ?>
-                        <?php $counter += 1; ?>
+                        <?php foreach ($string_splitted as &$string) { ?>
+                            <?php if (strlen($string) > 0) { ?>
+                                <?php echo "<tr>"; ?>
+                                <?php echo "<td>" . $counter . "</td>"; ?>
+                                <?php echo "<td>" . ($key+1) . "</td>"; ?>
+                                <?php echo "<td>" . $string . "</td>"; ?>
+                                <?php echo "<td>" . $string . "</td>"; ?>
+                                <?php $counter += 1; ?>   
+                                <?php echo "</tr>"; ?>
+                            <?php } ?>
                         <?php } ?>
-                    <?php echo "</tr>"; ?>
-                    <?php } ?>
                     <?php } ?>
                     <?php } ?>
                     </tbody>
