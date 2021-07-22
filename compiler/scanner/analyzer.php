@@ -18,6 +18,23 @@ class Analyzer {
         $this->special_symbols = $special_symbols;
     }
 
+    // check if string contain symbol or not
+    function is_contain_symbol($str,$identifiers,$constants) {
+
+        $splitted_str = str_split($str);
+
+        foreach ($splitted_str as $key => $value) {
+            $is_identifier = in_array($value,$identifiers,TRUE);
+            $is_constant = in_array($value,$constants,TRUE);
+
+            if (!($is_identifier || $is_constant)) {
+                return TRUE;
+            }
+        }
+
+        return FALSE;
+    }
+
 }
 
 ?>
