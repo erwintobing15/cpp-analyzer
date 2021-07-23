@@ -56,7 +56,7 @@
                                 <?php echo "<td>" . $counter . "</td>"; ?>
                                 <?php echo "<td>" . ($key+1) . "</td>"; ?>
                                 <?php echo "<td>" . $string . "</td>"; ?>
-                                <?php echo "<td>" . $string . "</td>"; ?>
+                                <?php echo "<td>" . $scanner->categorize_tokens($string) . "</td>"; ?>
                                 <?php $counter += 1; ?>   
                                 <?php echo "</tr>"; ?>
                             <?php } ?>

@@ -86,11 +86,23 @@ class Analyzer {
 
     // categorize tokens extract from input code
     function categorize_tokens($token) {
-        if (in_array($token, $this->identifiers)) { return "Identifier"; }
-        if (in_array($token, $this->constants)) { return "Constant"; }
-        if (in_array($token, $this->keywords)) { return "Keyword"; }
-        if (in_array($token, $this->operators)) { return "Operators"; }
-        if (in_array($token, $this->special_symbols)) { return "Special Symbol"; }
+        if (in_array($token, $this->keywords,TRUE)) { return "Keyword"; }
+        if (in_array($token, $this->operators,TRUE)) { return "Operators"; }
+        if (in_array($token, $this->special_symbols,TRUE)) { return "Special Symbol"; }
+
+        // split string to check every character is in identifers or constant array
+        $splitted_token = str_split($token);
+        $char_identifier = 0;
+        $char_constant = 0;
+        foreach ($splitted_token as &$value) {
+            if (in_array($value, $this->identifiers,TRUE)) { $char_identifier += 1; }
+            if (in_array($value, $this->constants,TRUE)) { $char_constant += 1; }
+        }
+
+        if (strlen($token) == $char_identifier) { return "Identifier"; }
+        if (strlen($token) == $char_constant) { return "Constant"; }
+
+        return "Couldn't analyze token";
     }
 
     // generate tokens as an array from input code
