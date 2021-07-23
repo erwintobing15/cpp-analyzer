@@ -84,6 +84,15 @@ class Analyzer {
         return $str_result;
     }
 
+    // categorize tokens extract from input code
+    function categorize_tokens($token) {
+        if (in_array($token, $this->identifiers)) { return "Identifier"; }
+        if (in_array($token, $this->constants)) { return "Constant"; }
+        if (in_array($token, $this->keywords)) { return "Keyword"; }
+        if (in_array($token, $this->operators)) { return "Operators"; }
+        if (in_array($token, $this->special_symbols)) { return "Special Symbol"; }
+    }
+
     // generate tokens as an array from input code
     function generate_tokens($input_code) {
         // split code base on new line
