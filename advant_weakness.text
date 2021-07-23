@@ -5,11 +5,11 @@ Yang dapat dilakukan :
 3. Bisa mengabaikan whitespace "#include < iostream        >";
 4. Membaca 3dafgf2342sd sebagai identifier yang nantinya akan menghasilkan error ketika dicompile
 5. Mendeteksi konstanta angka bernilai desimal tanpa dipisah berdasarkan titik, misal : 2.57
+6. Membaca operator >> atau << yang digabung dengan simbol string " atau ' contoh : <<" menjadi << dan "
+7. Mengabaikan baris atau teks yang berupa whitespace
 
 Yang tidak dapat dilakukan :
 1. special simbol untuk pointer *
-2. belum bisa membaca operator lebih dua simbol yang digabung dengan simbol lain contoh : <<" dibaca tetap <<" seharusnya << dan "
-3. tidak bisa membaca import library dengan akhiran .h contoh: stdio.h dibaca stdio .h
-4. membaca baris atau teks yang berupa whitespace
-5. membaca operator atau simbol pada komentar bukan sebagai identifier atau konstanta
-6. membaca nilai dalam string sebagai identifier, contoh : "hello" hello = identifier
+2. tidak bisa membaca import library dengan akhiran .h contoh: stdio.h dibaca stdio .h
+3. membaca operator atau simbol pada komentar bukan sebagai identifier atau konstanta
+4. membaca nilai dalam string sebagai identifier, contoh : "hello" hello = identifier
