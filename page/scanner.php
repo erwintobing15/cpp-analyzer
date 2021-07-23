@@ -51,7 +51,7 @@
                     <?php $counter = 1;?>
                     <?php foreach ($token_output as $key => $string_splitted) { ?>
                         <?php foreach ($string_splitted as &$string) { ?>
-                            <?php if (strlen($string) > 0) { ?>
+                            <?php if (!ctype_space($string)) { ?>
                                 <?php echo "<tr>"; ?>
                                 <?php echo "<td>" . $counter . "</td>"; ?>
                                 <?php echo "<td>" . ($key+1) . "</td>"; ?>
