@@ -21,16 +21,28 @@ class Analyzer {
 
         $splitted_str = str_split($str);
 
+        $char_ident_const = 0;
+        $char_ope_sym = 0;
         foreach ($splitted_str as $key => $value) {
             $is_identifier = in_array($value,$this->identifiers,TRUE);
             $is_constant = in_array($value,$this->constants,TRUE);
 
-            if (!($is_identifier || $is_constant)) {
-                return TRUE;
+            if ($is_identifier || $is_constant) {
+                $char_ident_const += 1;
+            }
+
+            $is_operator = in_array($value,$this->operators,TRUE);
+            $is_spec_symb = in_array($value,$this->special_symbols,TRUE);
+
+            if ($is_operator || $is_spec_symb) {
+                $char_ope_sym += 1;
             }
         }
 
-        return FALSE;
+        if (strlen($str) == $char_ident_const) { return FALSE; }
+        if (strlen($str) == $char_ope_sym) { return FALSE; }
+
+        return TRUE;
     }
 
     // split string that contain symbol
@@ -87,7 +99,7 @@ class Analyzer {
     // categorize tokens extract from input code
     function categorize_tokens($token) {
         if (in_array($token, $this->keywords,TRUE)) { return "Keyword"; }
-        if (in_array($token, $this->operators,TRUE)) { return "Operators"; }
+        if (in_array($token, $this->operators,TRUE)) { return "Operator"; }
         if (in_array($token, $this->special_symbols,TRUE)) { return "Special Symbol"; }
 
         // split string to check every character is in identifers or constant array
