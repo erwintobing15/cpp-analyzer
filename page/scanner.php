@@ -51,15 +51,15 @@
                     <?php $counter = 1;?>
                     <?php foreach ($token_output as $key => $string_splitted) { ?>
                         <?php foreach ($string_splitted as &$string) { ?>
-                            <?php if (!ctype_space($string)) { ?>
+                     
                                 <?php echo "<tr>"; ?>
                                 <?php echo "<td>" . $counter . "</td>"; ?>
                                 <?php echo "<td>" . ($key+1) . "</td>"; ?>
-                                <?php echo "<td>" . $string . "</td>"; ?>
-                                <?php echo "<td>" . $scanner->categorize_tokens($string) . "</td>"; ?>
+                                <?php echo "<td>" . $string[0] . "</td>"; ?>
+                                <?php echo "<td>" . $string[1] . "</td>"; ?>
                                 <?php $counter += 1; ?>   
                                 <?php echo "</tr>"; ?>
-                            <?php } ?>
+                    
                         <?php } ?>
                     <?php } ?>
                     <?php } ?>

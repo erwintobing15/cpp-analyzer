@@ -19,7 +19,7 @@ $keywords = [
     'struct',	'switch',	 'template',   'this',	       'thread_local',	   'throw',
     'TRUE',	    'try',	     'typedef',	   'typeid',	   'typename',	       'union',
     'unsigned',	'using',	 'virtual',    'void',	       'volatile',	       'wchar_t',
-    'while'
+    'while',    'include',
 ];
 
 $operators = [
@@ -30,8 +30,8 @@ $operators = [
 ];
 
 $special_symbols = [
-    '[',   ']',    '(',    ')',    '{',   '}',     
-    ',',    ':',    ';',   '*',    '#',    '//',            
+    '[',   ']',    '(',    ')',    '{',   '}',  "'",     
+    ',',    ':',    ';',   '*',    '#',    '//',    '"'          
 ];
 
 $special_case = [

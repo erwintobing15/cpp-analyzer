@@ -128,15 +128,32 @@ class Analyzer {
           $temp_arr = [];
           foreach ($string_splitted as $key_string => $string) {
             // check if the string need to be split
+            // else add string to temp_arr directly
             $need_split = ($this->to_be_separated($string));
             if ($need_split) {
                 // split string then add every new string to temp_arr
                 $new_string = $this->split_string($string);
                 foreach ($new_string as $key_str => $splitted_str) {
-                    array_push($temp_arr, $splitted_str);
+                    // check if the string is not whitespace
+                    if (!ctype_space($splitted_str) && strlen($splitted_str) > 0) {
+                        // push a new array contain token and its category to temp_array
+                        $new_token_arr = [];
+                        array_push($new_token_arr,$splitted_str);
+                        $token_category = $this->categorize_tokens(trim($splitted_str));
+                        array_push($new_token_arr,$token_category);
+                        array_push($temp_arr, $new_token_arr);
+                    }
                 }
             } else {
-                array_push($temp_arr, $string);
+                // check if the string that will be added not whitespace
+                if (!ctype_space($string) && strlen($string) > 0) {
+                    // push a new array contain token and its category to temp_array
+                    $new_token_arr = [];
+                    array_push($new_token_arr,$string);
+                    $token_category = $this->categorize_tokens(trim($string));
+                    array_push($new_token_arr,$token_category);
+                    array_push($temp_arr, $new_token_arr);
+                }      
             }  
           }
           array_push($token_output, $temp_arr);
