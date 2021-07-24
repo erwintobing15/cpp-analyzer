@@ -13,3 +13,4 @@ Yang tidak dapat dilakukan :
 2. tidak bisa membaca import library dengan akhiran .h contoh: stdio.h dibaca stdio .h
 3. membaca operator atau simbol pada komentar bukan sebagai identifier atau konstanta
 4. membaca nilai dalam string sebagai identifier, contoh : "hello" hello = identifier
+5. belum bisa mendeteki simbol new line \n, "\n" dibaca "\, n, dan " seharusnya ", \n, "

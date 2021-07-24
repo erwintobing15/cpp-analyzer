@@ -28,8 +28,8 @@ table.scrolldown tbody, table.scrolldown thead {
 }
 
 thead tr th {
-    height: 40px;
-    line-height: 40px;
+    height: 20px;
+    line-height: 20px;
     padding: 8px;
 }
 
@@ -52,8 +52,9 @@ tbody td, thead th {
 }
 
 td {
-    height: 32px;
-    line-height: 32px;
+    height: 20px;
+    line-height: 20px;
+    padding: 8px;
 }
 
 tbody tr:nth-child(odd){
