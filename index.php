@@ -25,8 +25,9 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
           <li><a href="index.php?content=scanner">Scanner</a></li>
-          <li><a href="index.php?content=parser">Parser</a></li>
-          <li><a href="index.php?content=semantik">Semantik</a></li>
+          <li><a href="index.php?content=tokens">Tokens</a></li>
+          <!-- <li><a href="index.php?content=parser">Parser</a></li>
+          <li><a href="index.php?content=semantik">Semantik</a></li> -->
           </ul>
         </div>
       </div>
@@ -40,8 +41,9 @@
       } else {
         switch($_GET['content']) {
           case 'scanner'  : include 'page/scanner.php'; break;
-          case 'parser'   : include 'page/parser.php'; break;
-          case 'semantik' : include 'page/semantik.php'; break;
+          case 'tokens'   : include 'page/tokens.php'; break;
+          // case 'parser'   : include 'page/parser.php'; break;
+          // case 'semantik' : include 'page/semantik.php'; break;
           default: include 'page/scanner.php';
         }
       } 
