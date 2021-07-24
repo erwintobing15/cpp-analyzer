@@ -162,12 +162,6 @@ class Analyzer {
         return $token_output;
     }
 
-    function token_category_counter($token_category,$category,$total) {
-        if ($token_category == $category) {
-            $total += 1;
-        }
-    }
-
 }
 
 ?>

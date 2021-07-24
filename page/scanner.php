@@ -13,6 +13,14 @@
     } else {
         $inputCode = "";
     };
+
+    // initialize tokens total
+    $identifers_total = 0;
+    $constants_total = 0;
+    $keywords_total = 0;
+    $operators_total = 0;
+    $special_symbols_total = 0;
+    $unrecognized_total = 0;
 ?>
 
 <div id="scanner-page">
@@ -22,8 +30,7 @@
                 <div class="form-group">
                     <label for="inputCode">Type code here!</label>
                     <textarea class="form-control" id="inputCode" name="inputCode" 
-                     rows="27"><?php echo $inputCode; ?>
-                    </textarea>
+                    rows="27"><?php echo $inputCode; ?></textarea>
                 </div>
                 <input type="submit" name="submit" value="Run" class="btn btn-success"/>
                 <button class="btn btn-danger" onclick="document.getElementById('inputCode').value = ''">
@@ -61,6 +68,18 @@
                                 <?php echo "<td>" . $string[1] . "</td>"; ?>
                                 <?php $counter += 1; ?>   
                                 <?php echo "</tr>"; ?>
+
+                                <?php 
+                                // count total of every token category 
+                                switch ($string[1]) {
+                                    case "Identifier" : $identifers_total += 1; break;
+                                    case "Constant" : $constants_total += 1; break;
+                                    case "Keyword" : $keywords_total += 1; break;
+                                    case "Operator" : $operators_total += 1; break;
+                                    case "Special Symbol" : $special_symbols_total += 1; break;
+                                    case "Couldn't analyze token" : $unrecognized_total += 1; break;
+                                }
+                                ?>
                     
                         <?php } ?>
                     <?php } ?>
@@ -77,17 +96,34 @@
                         <th>Constant</th>
                         <th>Keyword</th>
                         <th>Operator</th>
-                        <th>Special Symbol</th>
+                        <th>Spec Symbol</th>
+                        <th>Error</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>40</td>
-                        <td>50</td>
-                        <td>49</td>
-                        <td>50</td>
-                        <td>45</td>
-                    </tr>
+                    <!-- display 0 as tokens total if there is no input code -->
+                    <?php if (!isset($_POST['submit'])) { ?>
+                        <tr>
+                            <td>0</td>  
+                            <td>0</td>  
+                            <td>0</td>  
+                            <td>0</td>  
+                            <td>0</td>  
+                            <td>0</td>  
+                        </tr>
+                    <?php } ?>
+                
+                    <!-- display tokens total that already counted if there is input code -->
+                    <?php if (isset($_POST['submit'])) {?>
+                        <?php echo "<tr>"; ?>
+                            <?php echo "<td>" . $identifers_total . "</td>"; ?>
+                            <?php echo "<td>" . $constants_total . "</td>"; ?> 
+                            <?php echo "<td>" . $keywords_total . "</td>"; ?> 
+                            <?php echo "<td>" . $operators_total . "</td>"; ?> 
+                            <?php echo "<td>" . $special_symbols_total . "</td>"; ?> 
+                            <?php echo "<td>" . $unrecognized_total . "</td>"; ?> 
+                        <?php echo "</tr>"; ?>
+                    <?php }?> 
                 </tbody>
             </table>
         </div>
