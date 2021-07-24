@@ -16,10 +16,9 @@
 
 table.scrolldown {
     width: 100%;
-
     /* border-collapse: collapse; */
     border-spacing: 0;
-    border: 1px solid black;
+    border: 1px solid gray;
 }
 
 /* To display the block as level element */
@@ -31,20 +30,23 @@ thead tr th {
     height: 20px;
     line-height: 20px;
     padding: 8px;
+    /* background-color: #04AA6D; */
+    background-color: darkcyan;
+    color: white;
 }
 
 table.scrolldown tbody {
     /* Set the height of table body */
-    height: 450px;
+    height: 394px;
     /* Set vertical scroll */
     overflow-y: auto;
     /* Hide the horizontal scroll */
     overflow-x: hidden;
 }
 
-tbody {
+/* tbody {
     border-top: 1px solid black;
-}
+} */
 
 tbody td, thead th {
     width : 200px;
@@ -58,6 +60,10 @@ td {
 }
 
 tbody tr:nth-child(odd){
-  background-color: #ccc;
-  /* color: #fff; */
+  background-color: #f2f2f2;
 }       
+
+/* token total table style */
+/* #tokenTotal {
+    border: 1px solid black;
+} */

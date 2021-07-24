@@ -21,7 +21,9 @@
             <form method="post">
                 <div class="form-group">
                     <label for="inputCode">Type code here!</label>
-                    <textarea class="form-control" id="inputCode" name="inputCode" rows="25"><?php echo $inputCode; ?></textarea>
+                    <textarea class="form-control" id="inputCode" name="inputCode" 
+                     rows="27"><?php echo $inputCode; ?>
+                    </textarea>
                 </div>
                 <input type="submit" name="submit" value="Run" class="btn btn-success"/>
                 <button class="btn btn-danger" onclick="document.getElementById('inputCode').value = ''">
@@ -65,8 +67,29 @@
                     <?php } ?>
                     </tbody>
                 </table>
-
             </div>
+
+            <label for="tokenTotal">Total Token</label>
+            <table id="tokenTotal">
+                <thead>
+                    <tr>
+                        <th>Identifier</th>
+                        <th>Constant</th>
+                        <th>Keyword</th>
+                        <th>Operator</th>
+                        <th>Special Symbol</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>40</td>
+                        <td>50</td>
+                        <td>49</td>
+                        <td>50</td>
+                        <td>45</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div> 
 </div>
