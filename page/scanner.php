@@ -96,15 +96,13 @@
                         <th>Number</th>
                         <th>Keyword</th>
                         <th>Operator</th>
-                        <th>Spec Symbol</th>
-                        <th>Error</th>
+                        <th>Special Symbol</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- display 0 as tokens total if there is no input code -->
                     <?php if (!isset($_POST['submit'])) { ?>
                         <tr>
-                            <td>0</td>  
                             <td>0</td>  
                             <td>0</td>  
                             <td>0</td>  
@@ -121,6 +119,40 @@
                             <?php echo "<td>" . $keywords_total . "</td>"; ?> 
                             <?php echo "<td>" . $operators_total . "</td>"; ?> 
                             <?php echo "<td>" . $special_symbols_total . "</td>"; ?> 
+                        <?php echo "</tr>"; ?>
+                    <?php }?> 
+                </tbody>
+            </table>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Constant</th>
+                        <th>String</th>
+                        <th>Character</th>
+                        <th>Comment</th>
+                        <th>Error</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- display 0 as tokens total if there is no input code -->
+                    <?php if (!isset($_POST['submit'])) { ?>
+                        <tr>
+                            <td>0</td>  
+                            <td>0</td>  
+                            <td>0</td>  
+                            <td>0</td>  
+                            <td>0</td>   
+                        </tr>
+                    <?php } ?>
+                
+                    <!-- display tokens total that already counted if there is input code -->
+                    <?php if (isset($_POST['submit'])) {?>
+                        <?php echo "<tr>"; ?>
+                            <?php echo "<td>" . $identifers_total . "</td>"; ?>
+                            <?php echo "<td>" . $numbers_total . "</td>"; ?> 
+                            <?php echo "<td>" . $keywords_total . "</td>"; ?> 
+                            <?php echo "<td>" . $operators_total . "</td>"; ?> 
                             <?php echo "<td>" . $unrecognized_total . "</td>"; ?> 
                         <?php echo "</tr>"; ?>
                     <?php }?> 
