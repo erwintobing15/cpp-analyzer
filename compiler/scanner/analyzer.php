@@ -97,13 +97,17 @@ class Analyzer {
     }
 
     // categorize tokens extract from input code
-    function categorize_tokens($token,$check_const) {
+    function categorize_tokens($token,$check_const,$double_quote) {
 
+        // checking constant using keyword const
         if ($check_const == "const") { return "Constant"; }
 
         if (in_array($token, $this->keywords,TRUE)) { return "Keyword"; }
         if (in_array($token, $this->operators,TRUE)) { return "Operator"; }
         if (in_array($token, $this->special_symbols,TRUE)) { return "Special Symbol"; }
+
+        // checking string after checking operator so the close quote not return string too
+        if ($double_quote == 1) { return "String"; }
 
         // split string to check every character is in identifers or constant array
         $splitted_token = str_split($token);
@@ -128,10 +132,12 @@ class Analyzer {
 
         $token_output = [];
         foreach ($text_input as $key_row => $string_row) {
+
           $string_splitted = explode(" ", $string_row);
           $temp_arr = [];
+          $double_quote = 0;
           foreach ($string_splitted as $key_string => $string) {
-            // initialize variable as parameter to check constant category
+            // initialize variable as parameter to check constant
             $check_const = isset($string_splitted[$key_string-2]) ? trim($string_splitted[$key_string-2]) : NULL;
 
             // check if the string need to be split
@@ -146,9 +152,14 @@ class Analyzer {
                         // push a new array contain token and its category to temp_array
                         $new_token_arr = [];
                         array_push($new_token_arr,$splitted_str);
-                        $token_category = $this->categorize_tokens(trim($splitted_str),$check_const);
+                        $token_category = $this->categorize_tokens(trim($splitted_str),
+                                                                    $check_const,
+                                                                    $double_quote);
                         array_push($new_token_arr,$token_category);
                         array_push($temp_arr, $new_token_arr);
+
+                        // check double quote
+                        if ($splitted_str == '"') { $double_quote += 1; }
                     }
                 }
             } else {
@@ -157,9 +168,14 @@ class Analyzer {
                     // push a new array contain token and its category to temp_array
                     $new_token_arr = [];
                     array_push($new_token_arr,$string);
-                    $token_category = $this->categorize_tokens(trim($string),$check_const);
+                    $token_category = $this->categorize_tokens(trim($string),
+                                                                $check_const,
+                                                                $double_quote);
                     array_push($new_token_arr,$token_category);
                     array_push($temp_arr, $new_token_arr);
+
+                    // check double quote
+                    if ($string == '"') { $double_quote += 1; }
                 }      
             }  
           }
