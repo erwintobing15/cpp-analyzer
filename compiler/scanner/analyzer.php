@@ -97,7 +97,10 @@ class Analyzer {
     }
 
     // categorize tokens extract from input code
-    function categorize_tokens($token,$check_const,$double_quote,$single_quote) {
+    function categorize_tokens($token,$check_const,$double_quote,$single_quote,$comment_symbol) 
+    {
+        // checking comment using $comment_symbol
+        if ($comment_symbol == 1) { return "Comment"; }
 
         // checking constant using keyword const
         if ($check_const == "const") { return "Constant"; }
@@ -138,6 +141,7 @@ class Analyzer {
           $temp_arr = [];
           $double_quote = 0;    // initialized for string categorizing
           $single_quote = 0;    // initialized for char categorizing
+          $comment_symbol = 0;
           foreach ($string_splitted as $key_string => $string) {
             // initialize variable as parameter to check constant
             $check_const = isset($string_splitted[$key_string-2]) ? trim($string_splitted[$key_string-2]) : NULL;
@@ -157,13 +161,20 @@ class Analyzer {
                         $token_category = $this->categorize_tokens(trim($splitted_str),
                                                                     $check_const,
                                                                     $double_quote,
-                                                                    $single_quote);
+                                                                    $single_quote,
+                                                                    $comment_symbol);
                         array_push($new_token_arr,$token_category);
                         array_push($temp_arr, $new_token_arr);
 
                         // check double quote
                         if ($splitted_str == '"') { $double_quote += 1; }
                         if ($splitted_str == "'") { $single_quote += 1; }
+
+                        // check comment symbol
+                        if ($splitted_str == "//") { $comment_symbol += 1; }
+                        if ($key_string+1 == sizeof($string_splitted)) {
+                            $comment_symbol -= 1;
+                        }
                     }
                 }
             } else {
@@ -175,13 +186,20 @@ class Analyzer {
                     $token_category = $this->categorize_tokens(trim($string),
                                                                 $check_const,
                                                                 $double_quote,
-                                                                $single_quote);
+                                                                $single_quote,
+                                                                $comment_symbol);
                     array_push($new_token_arr,$token_category);
                     array_push($temp_arr, $new_token_arr);
 
                     // check double quote
                     if ($string == '"') { $double_quote += 1; }
                     if ($string == "'") { $single_quote += 1; }
+
+                    // check comment symbol
+                    if ($string == "//") { $comment_symbol += 1; }
+                    if ($key_string+1 == sizeof($string_splitted)) {
+                        $comment_symbol -= 1;
+                    }
                 }      
             }  
           }
