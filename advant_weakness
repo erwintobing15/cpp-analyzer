@@ -19,3 +19,4 @@ Yang tidak dapat dilakukan :
 4. membaca nilai dalam string sebagai identifier, contoh : "hello" hello = identifier
 5. belum bisa mendeteki simbol new line \n, "\n" dibaca "\, n, dan " seharusnya ", \n, "
 6. tidak dapat membaca identifier dengan []yang terpisah contoh array [1] menjadi array dan [1]
+7. membaca true dan false sebagai identifier

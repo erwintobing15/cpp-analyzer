@@ -20,6 +20,10 @@
     $keywords_total = 0;
     $operators_total = 0;
     $special_symbols_total = 0;
+    $constant_total = 0;
+    $string_total = 0;
+    $char_total = 0;
+    $comment_total = 0;
     $unrecognized_total = 0;
 ?>
 
@@ -77,6 +81,10 @@
                                     case "Keyword" : $keywords_total += 1; break;
                                     case "Operator" : $operators_total += 1; break;
                                     case "Special Symbol" : $special_symbols_total += 1; break;
+                                    case "Constant" : $constant_total += 1; break;
+                                    case "String" : $string_total += 1; break;
+                                    case "Char" : $char_total += 1; break;
+                                    case "Comment" : $comment_total += 1; break;
                                     case "Couldn't analyze token" : $unrecognized_total += 1; break;
                                 }
                                 ?>
@@ -149,10 +157,10 @@
                     <!-- display tokens total that already counted if there is input code -->
                     <?php if (isset($_POST['submit'])) {?>
                         <?php echo "<tr>"; ?>
-                            <?php echo "<td>" . $identifers_total . "</td>"; ?>
-                            <?php echo "<td>" . $numbers_total . "</td>"; ?> 
-                            <?php echo "<td>" . $keywords_total . "</td>"; ?> 
-                            <?php echo "<td>" . $operators_total . "</td>"; ?> 
+                            <?php echo "<td>" . $constant_total . "</td>"; ?>
+                            <?php echo "<td>" . $string_total . "</td>"; ?> 
+                            <?php echo "<td>" . $char_total . "</td>"; ?> 
+                            <?php echo "<td>" . $comment_total . "</td>"; ?> 
                             <?php echo "<td>" . $unrecognized_total . "</td>"; ?> 
                         <?php echo "</tr>"; ?>
                     <?php }?> 
