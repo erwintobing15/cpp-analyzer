@@ -1,9 +1,20 @@
+<?php
+  if (!isset($_GET['content'])) {
+    $title = "C++ Compiler";
+  } else {
+    switch($_GET['content']) {
+      case 'scanner'  : $title = "C++ Analyzer"; break;
+      case 'tokens'   : $title = "C++ Tokens List"; break;
+      default: $title = "C++ Compiler";
+    }
+  }
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>C++ Online Compiler</title>
+    <title><?php echo $title; ?></title>
     <link rel="stylesheet" href="css/style.css">
       <meta charset="utf-8">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
