@@ -97,7 +97,10 @@ class Analyzer {
     }
 
     // categorize tokens extract from input code
-    function categorize_tokens($token) {
+    function categorize_tokens($token,$check_const) {
+
+        if ($check_const == "const") { return "Constant"; }
+
         if (in_array($token, $this->keywords,TRUE)) { return "Keyword"; }
         if (in_array($token, $this->operators,TRUE)) { return "Operator"; }
         if (in_array($token, $this->special_symbols,TRUE)) { return "Special Symbol"; }
@@ -112,8 +115,8 @@ class Analyzer {
         }
 
         if (strlen($token) == $char_identifier) { return "Identifier"; }
-        if (strlen($token) == ($char_identifier+$char_number)) { return "Identifier"; }
         if (strlen($token) == $char_number) { return "Number"; }
+        if (strlen($token) == ($char_identifier+$char_number)) { return "Identifier"; }
 
         return "Couldn't analyze token";
     }
@@ -128,6 +131,9 @@ class Analyzer {
           $string_splitted = explode(" ", $string_row);
           $temp_arr = [];
           foreach ($string_splitted as $key_string => $string) {
+            // initialize variable as parameter to check constant category
+            $check_const = isset($string_splitted[$key_string-2]) ? trim($string_splitted[$key_string-2]) : NULL;
+
             // check if the string need to be split
             // else add string to temp_arr directly
             $need_split = ($this->to_be_separated($string));
@@ -140,7 +146,7 @@ class Analyzer {
                         // push a new array contain token and its category to temp_array
                         $new_token_arr = [];
                         array_push($new_token_arr,$splitted_str);
-                        $token_category = $this->categorize_tokens(trim($splitted_str));
+                        $token_category = $this->categorize_tokens(trim($splitted_str),$check_const);
                         array_push($new_token_arr,$token_category);
                         array_push($temp_arr, $new_token_arr);
                     }
@@ -151,7 +157,7 @@ class Analyzer {
                     // push a new array contain token and its category to temp_array
                     $new_token_arr = [];
                     array_push($new_token_arr,$string);
-                    $token_category = $this->categorize_tokens(trim($string));
+                    $token_category = $this->categorize_tokens(trim($string),$check_const);
                     array_push($new_token_arr,$token_category);
                     array_push($temp_arr, $new_token_arr);
                 }      
