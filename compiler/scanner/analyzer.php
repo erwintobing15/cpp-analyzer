@@ -2,15 +2,15 @@
 
 class Analyzer {
 
-    public $identifiers;
-    public $constants;
+    public $alphabets;
+    public $numbers;
     public $keywords;
     public $operators;
     public $special_symbols;
 
-    function __construct($identifiers,$constants,$keywords,$operators,$special_symbols) {
-        $this->identifiers = $identifiers;
-        $this->constants = $constants;
+    function __construct($alphabets,$numbers,$keywords,$operators,$special_symbols) {
+        $this->alphabets = $alphabets;
+        $this->numbers = $numbers;
         $this->keywords = $keywords;
         $this->operators = $operators;
         $this->special_symbols = $special_symbols;
@@ -24,8 +24,8 @@ class Analyzer {
         $char_ident_const = 0;
         $char_ope_sym = 0;
         foreach ($splitted_str as $key => $value) {
-            $is_identifier = in_array($value,$this->identifiers,TRUE);
-            $is_constant = in_array($value,$this->constants,TRUE);
+            $is_identifier = in_array($value,$this->alphabets,TRUE);
+            $is_constant = in_array($value,$this->numbers,TRUE);
 
             if ($is_identifier || $is_constant) {
                 $char_ident_const += 1;
@@ -58,10 +58,10 @@ class Analyzer {
         for ($i = 1; $i < sizeof($splitted_str); $i++)
         {
             // check if input string is identifier or constant
-            $is_char_before_identifier = in_array($splitted_str[$i-1], $this->identifiers, TRUE);
-            $is_char_now_identifier = in_array($splitted_str[$i], $this->identifiers, TRUE);
-            $is_char_before_constant = in_array($splitted_str[$i-1], $this->constants, TRUE);
-            $is_char_now_constant = in_array($splitted_str[$i], $this->constants, TRUE);
+            $is_char_before_identifier = in_array($splitted_str[$i-1], $this->alphabets, TRUE);
+            $is_char_now_identifier = in_array($splitted_str[$i], $this->alphabets, TRUE);
+            $is_char_before_constant = in_array($splitted_str[$i-1], $this->numbers, TRUE);
+            $is_char_now_constant = in_array($splitted_str[$i], $this->numbers, TRUE);
 
             $char_before_not_symbol = ($is_char_before_identifier || $is_char_before_constant);
             $char_now_not_symbol = ($is_char_now_identifier || $is_char_now_constant);
@@ -107,12 +107,12 @@ class Analyzer {
         $char_identifier = 0;
         $char_constant = 0;
         foreach ($splitted_token as &$value) {
-            if (in_array($value, $this->identifiers,TRUE)) { $char_identifier += 1; }
-            if (in_array($value, $this->constants,TRUE)) { $char_constant += 1; }
+            if (in_array($value, $this->alphabets,TRUE)) { $char_identifier += 1; }
+            if (in_array($value, $this->numbers,TRUE)) { $char_constant += 1; }
         }
 
         if (strlen($token) == $char_identifier) { return "Identifier"; }
-        if (strlen($token) == $char_constant) { return "Constant"; }
+        if (strlen($token) == $char_constant) { return "Number"; }
 
         return "Couldn't analyze token";
     }

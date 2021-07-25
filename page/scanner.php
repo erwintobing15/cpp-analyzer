@@ -3,7 +3,7 @@
     require './compiler/scanner/analyzer.php';
     require './compiler/scanner/tokens.php';
     
-    $scanner = new Analyzer($identifiers,$constants,$keywords,$operators,$special_symbols);
+    $scanner = new Analyzer($alphabets,$numbers,$keywords,$operators,$special_symbols);
 
     if (isset($_POST['submit'])) {
         $inputCode = isset($_POST['inputCode']) ? $_POST['inputCode'] : "";
@@ -16,7 +16,7 @@
 
     // initialize tokens total
     $identifers_total = 0;
-    $constants_total = 0;
+    $numbers_total = 0;
     $keywords_total = 0;
     $operators_total = 0;
     $special_symbols_total = 0;
@@ -73,7 +73,7 @@
                                 // count total of every token category 
                                 switch ($string[1]) {
                                     case "Identifier" : $identifers_total += 1; break;
-                                    case "Constant" : $constants_total += 1; break;
+                                    case "Number" : $numbers_total += 1; break;
                                     case "Keyword" : $keywords_total += 1; break;
                                     case "Operator" : $operators_total += 1; break;
                                     case "Special Symbol" : $special_symbols_total += 1; break;
@@ -93,7 +93,7 @@
                 <thead>
                     <tr>
                         <th>Identifier</th>
-                        <th>Constant</th>
+                        <th>Number</th>
                         <th>Keyword</th>
                         <th>Operator</th>
                         <th>Spec Symbol</th>
@@ -117,7 +117,7 @@
                     <?php if (isset($_POST['submit'])) {?>
                         <?php echo "<tr>"; ?>
                             <?php echo "<td>" . $identifers_total . "</td>"; ?>
-                            <?php echo "<td>" . $constants_total . "</td>"; ?> 
+                            <?php echo "<td>" . $numbers_total . "</td>"; ?> 
                             <?php echo "<td>" . $keywords_total . "</td>"; ?> 
                             <?php echo "<td>" . $operators_total . "</td>"; ?> 
                             <?php echo "<td>" . $special_symbols_total . "</td>"; ?> 
