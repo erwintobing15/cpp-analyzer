@@ -105,14 +105,15 @@ class Analyzer {
         // split string to check every character is in identifers or constant array
         $splitted_token = str_split($token);
         $char_identifier = 0;
-        $char_constant = 0;
+        $char_number = 0;
         foreach ($splitted_token as &$value) {
             if (in_array($value, $this->alphabets,TRUE)) { $char_identifier += 1; }
-            if (in_array($value, $this->numbers,TRUE)) { $char_constant += 1; }
+            if (in_array($value, $this->numbers,TRUE)) { $char_number += 1; }
         }
 
         if (strlen($token) == $char_identifier) { return "Identifier"; }
-        if (strlen($token) == $char_constant) { return "Number"; }
+        if (strlen($token) == ($char_identifier+$char_number)) { return "Identifier"; }
+        if (strlen($token) == $char_number) { return "Number"; }
 
         return "Couldn't analyze token";
     }

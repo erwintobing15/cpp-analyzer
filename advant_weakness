@@ -7,6 +7,10 @@ Yang dapat dilakukan :
 5. Mendeteksi konstanta angka bernilai desimal tanpa dipisah berdasarkan titik, misal : 2.57
 6. Membaca operator >> atau << yang digabung dengan simbol string " atau ' contoh : <<" menjadi << dan "
 7. Mengabaikan baris atau teks yang berupa whitespace
+8. Membaca identifier yang mengandung angka, contoh baris_1, ronaldo7
+9. Membaca identifier dengan [] contoh array[1] 
+
+
 
 Yang tidak dapat dilakukan :
 1. special simbol untuk pointer *
@@ -14,5 +18,4 @@ Yang tidak dapat dilakukan :
 3. membaca operator atau simbol pada komentar bukan sebagai identifier atau konstanta
 4. membaca nilai dalam string sebagai identifier, contoh : "hello" hello = identifier
 5. belum bisa mendeteki simbol new line \n, "\n" dibaca "\, n, dan " seharusnya ", \n, "
-6. tidak dapat membaca identifier yang mengandung angka, contoh baris_1, ronaldo7
-7. tidak dapat mendeteki identifier dengan [] dan () contoh array[1] atau buku()
+6. tidak dapat membaca identifier dengan []yang terpisah contoh array [1] menjadi array dan [1]
