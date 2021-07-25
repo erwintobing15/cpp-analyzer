@@ -97,7 +97,7 @@ class Analyzer {
     }
 
     // categorize tokens extract from input code
-    function categorize_tokens($token,$check_const,$double_quote) {
+    function categorize_tokens($token,$check_const,$double_quote,$single_quote) {
 
         // checking constant using keyword const
         if ($check_const == "const") { return "Constant"; }
@@ -108,6 +108,7 @@ class Analyzer {
 
         // checking string after checking operator so the close quote not return string too
         if ($double_quote == 1) { return "String"; }
+        if ($single_quote == 1) { return "Char"; }
 
         // split string to check every character is in identifers or constant array
         $splitted_token = str_split($token);
@@ -135,7 +136,8 @@ class Analyzer {
 
           $string_splitted = explode(" ", $string_row);
           $temp_arr = [];
-          $double_quote = 0;
+          $double_quote = 0;    // initialized for string categorizing
+          $single_quote = 0;    // initialized for char categorizing
           foreach ($string_splitted as $key_string => $string) {
             // initialize variable as parameter to check constant
             $check_const = isset($string_splitted[$key_string-2]) ? trim($string_splitted[$key_string-2]) : NULL;
@@ -154,12 +156,14 @@ class Analyzer {
                         array_push($new_token_arr,$splitted_str);
                         $token_category = $this->categorize_tokens(trim($splitted_str),
                                                                     $check_const,
-                                                                    $double_quote);
+                                                                    $double_quote,
+                                                                    $single_quote);
                         array_push($new_token_arr,$token_category);
                         array_push($temp_arr, $new_token_arr);
 
                         // check double quote
                         if ($splitted_str == '"') { $double_quote += 1; }
+                        if ($splitted_str == "'") { $single_quote += 1; }
                     }
                 }
             } else {
@@ -170,12 +174,14 @@ class Analyzer {
                     array_push($new_token_arr,$string);
                     $token_category = $this->categorize_tokens(trim($string),
                                                                 $check_const,
-                                                                $double_quote);
+                                                                $double_quote,
+                                                                $single_quote);
                     array_push($new_token_arr,$token_category);
                     array_push($temp_arr, $new_token_arr);
 
                     // check double quote
                     if ($string == '"') { $double_quote += 1; }
+                    if ($string == "'") { $single_quote += 1; }
                 }      
             }  
           }
