@@ -15,3 +15,4 @@ Yang tidak dapat dilakukan :
 4. membaca nilai dalam string sebagai identifier, contoh : "hello" hello = identifier
 5. belum bisa mendeteki simbol new line \n, "\n" dibaca "\, n, dan " seharusnya ", \n, "
 6. tidak dapat membaca identifier yang mengandung angka, contoh baris_1, ronaldo7
+7. tidak dapat mendeteki identifier dengan [] dan () contoh array[1] atau buku()

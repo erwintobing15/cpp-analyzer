@@ -7,7 +7,7 @@
 }
 
 #tokens-page {
-    margin: 25px;
+    background-color: #ddd;
 }
 
 /* 
@@ -44,10 +44,6 @@ table.scrolldown tbody {
     overflow-x: hidden;
 }
 
-/* tbody {
-    border-top: 1px solid black;
-} */
-
 tbody td, thead th {
     width : 200px;
     padding: 8px;
@@ -63,7 +59,12 @@ tbody tr:nth-child(odd){
   background-color: #f2f2f2;
 }       
 
-/* token total table style */
-/* #tokenTotal {
-    border: 1px solid black;
-} */
+.container {
+    background-color: #fff;
+    font-family:'alegreya', 'oswal and abel', 'open sans';
+}
+
+p, li {
+    font-size: large;
+    font-family:'alegreya', 'oswal and abel', 'open sans';
+}
