@@ -29,23 +29,26 @@
 
 <div id="scanner-page">
     <div class="row">
+        <!-- input code textarea -->
         <div class="col-xs-12 col-md-6">
             <form method="post">
                 <div class="form-group">
                     <label for="inputCode">Type code here!</label>
-                    <textarea class="form-control" id="inputCode" name="inputCode" 
-                    rows="27"><?php echo $inputCode; ?></textarea>
+                    <textarea class="lined" rows="31" name="inputCode" 
+                    id="inputCode"><?php echo $inputCode; ?></textarea>
                 </div>
                 <input type="submit" name="submit" value="Run" class="btn btn-success"/>
                 <button class="btn btn-danger" onclick="document.getElementById('inputCode').value = ''">
                     Clear
                 </button>
             </form>
+
         </div>
 
         <div class="col-xs-12 col-md-6">
             <div class="form-group">
 
+                <!-- table token list -->
                 <label for="outputToken">Token List</label>
                 <table class="scrolldown" id="outputToken">
                     <!-- Table head content -->
@@ -96,6 +99,7 @@
                 </table>
             </div>
 
+            <!-- table token total -->
             <label for="tokenTotal">Total Token</label>
             <table id="tokenTotal">
                 <thead>

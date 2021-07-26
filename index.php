@@ -60,6 +60,14 @@
       } 
     ?>
 
-  </body>
+  <script>
+    $(function() {
+      $(".lined").linedtextarea(
+        {selectedLine: 1}
+      );
+    });
+  </script>
   <script src="js/scanner.js"></script>
+
+  </body>
 </html>
