@@ -100,7 +100,11 @@ class Analyzer {
     function categorize_tokens($token,$check_const,$double_quote,$single_quote,$comment_symbol) 
     {
         // checking comment using $comment_symbol
-        if ($comment_symbol == 1) { return "Comment"; }
+        if ($comment_symbol > 0) { 
+            // immediately return Special Symbol if token is '*/'
+            if ($token == "*/") { return "Special Symbol"; }
+            return "Comment"; 
+        }
 
         // checking constant using keyword const
         if ($check_const == "const") { return "Constant"; }
@@ -135,13 +139,13 @@ class Analyzer {
         $text_input = explode("\n", $input_code);
 
         $token_output = [];
+        $comment_symbol = 0;
         foreach ($text_input as $key_row => $string_row) {
 
           $string_splitted = explode(" ", $string_row);
           $temp_arr = [];
           $double_quote = 0;    // initialized for string categorizing
           $single_quote = 0;    // initialized for char categorizing
-          $comment_symbol = 0;
           foreach ($string_splitted as $key_string => $string) {
             // initialize variable as parameter to check constant
             $check_const = isset($string_splitted[$key_string-2]) ? trim($string_splitted[$key_string-2]) : NULL;
@@ -167,13 +171,21 @@ class Analyzer {
                         array_push($temp_arr, $new_token_arr);
 
                         // check double quote
-                        if ($splitted_str == '"') { $double_quote += 1; }
-                        if ($splitted_str == "'") { $single_quote += 1; }
+                        if (trim($splitted_str) == '"') { $double_quote += 1; }
+                        if (trim($splitted_str) == "'") { $single_quote += 1; }
 
                         // check comment symbol
-                        if ($splitted_str == "//") { $comment_symbol += 1; }
-                        if ($key_string+1 == sizeof($string_splitted)) {
-                            $comment_symbol -= 1;
+                        if (trim($splitted_str) == "//") { $comment_symbol += 1; }
+                        if (trim($splitted_str) == "/*") { $comment_symbol += 2; }
+                        // stop for comment symbol '//'
+                        if ($comment_symbol == 1) {
+                            if ($key_string+1 == sizeof($string_splitted)) {
+                                $comment_symbol -= 1;
+                            }
+                        }
+                        // stop for comment symbol '/*' and '*/
+                        if ($comment_symbol == 2) {
+                            if (trim($splitted_str) == "*/") { $comment_symbol -= 2; }
                         }
                     }
                 }
@@ -192,13 +204,21 @@ class Analyzer {
                     array_push($temp_arr, $new_token_arr);
 
                     // check double quote
-                    if ($string == '"') { $double_quote += 1; }
-                    if ($string == "'") { $single_quote += 1; }
+                    if (trim($string) == '"') { $double_quote += 1; }
+                    if (trim($string) == "'") { $single_quote += 1; }
 
                     // check comment symbol
-                    if ($string == "//") { $comment_symbol += 1; }
-                    if ($key_string+1 == sizeof($string_splitted)) {
-                        $comment_symbol -= 1;
+                    if (trim($string) == "//") { $comment_symbol += 1; }
+                    if (trim($string) == "/*") { $comment_symbol += 2; }
+                    // stop for comment symbol '//'
+                    if ($comment_symbol == 1) {
+                        if ($key_string+1 == sizeof($string_splitted)) {
+                            $comment_symbol -= 1;
+                        }
+                    }
+                    // stop for comment symbol '/*' and '*/
+                    if ($comment_symbol == 2) {
+                        if (trim($string) == "*/") { $comment_symbol -= 2; }
                     }
                 }      
             }  
