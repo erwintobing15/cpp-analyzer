@@ -1,11 +1,12 @@
 # cpp-compiler
 
-![Demo Web](../assets/logo.PNG?raw=true)
+![Demo Web](../assets/demo.PNG?raw=true)
 
+## Intro
 > A webapp that generate tokens from a C++ source code in C++ as object language and implemented using PHP language
 
 ## Demo
-Check out live demo here : (https://cpp-analyzer.000webhostapp.com/)
+Check out live demo here : https://cpp-analyzer.000webhostapp.com/
 
 ## Technologies Used
 - PHP 8.0.3
