@@ -3,7 +3,7 @@
 ![Demo Web](../assets/demo.PNG?raw=true)
 
 ## Intro
-> A webapp that generate tokens from a C++ source code in C++ as object language and implemented using PHP language
+> A webapp that generate tokens from a C++ source code as object language and implemented using PHP language
 
 ## Demo
 Check out live demo here : https://cpp-analyzer.000webhostapp.com/
