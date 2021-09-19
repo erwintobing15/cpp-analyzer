@@ -6,7 +6,7 @@
 > A webapp that generate tokens from a C++ source code as object language and implemented using PHP language
 
 ## Demo
-Check out live demo here : https://cpp-analyzer.000webhostapp.com/
+Check out live demo here : https://cppanalyzer.000webhostapp.com/
 
 ## Technologies Used
 - PHP 8.0.3
