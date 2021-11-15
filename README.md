@@ -25,4 +25,4 @@ Check out live demo [here](https://cppanalyzer.000webhostapp.com/).
 * JQuery
 
 ## System Diagram
-![System](./images.system.png)
+![System](../assets/system.png)
